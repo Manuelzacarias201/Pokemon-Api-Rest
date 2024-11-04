@@ -1,0 +1,17 @@
+<ng-container matColumnDef="name">
+  <th mat-header-cell *matHeaderCellDef> Name </th>
+  <td mat-cell *matCellDef="let pokemon">
+    <a [routerLink]="['/pokemon', pokemon.name]" title="View {{ pokemon.name }} details">
+      {{ pokemon.name | uppercase }}
+    </a>
+  </td>
+</ng-container>
+
+<ng-container matColumnDef="favorite">
+  <th mat-header-cell *matHeaderCellDef> Favorite </th>
+  <td mat-cell *matCellDef="let pokemon">
+    <button (click)="toggleFavorite(pokemon)" [disabled]="pokemon.isFavorite">
+      {{ pokemon.isFavorite ? 'Remove from Favorites' : 'Add to Favorites' }}
+    </button>
+  </td>
+</ng-container>
