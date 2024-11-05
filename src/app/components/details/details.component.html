@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="pokemon-details" *ngIf="pokemon">
+  <h1>{{ pokemon.name | titlecase }}</h1>
+  
+  <div class="pokemon-image">
+    <img [src]="pokemon.sprites?.front_default" alt="{{ pokemon.name }}" />
+    <img [src]="pokemon.sprites?.front_shiny" alt="{{ pokemon.name }}" />
+    <img [src]="pokemon.sprites?.back_default" alt="{{ pokemon.name }}" />
+    <img [src]="pokemon.sprites?.back_shiny" alt="{{ pokemon.name }}" />
+
+  </div>
+  
+  <div class="pokemon-info">
+    <div class="pokemon-abilities">
+      <h2>Habilidades</h2>
+      <ul>
+        <li *ngFor="let ability of pokemon.abilities">
+          {{ ability.ability.name | titlecase }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!pokemon" class="no-details">
+  <p>No se encontraron detalles para este Pokémon.</p>
+</div>
